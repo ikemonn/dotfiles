@@ -45,6 +45,14 @@ NeoBundle 'vim-scripts/newspaper.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'szw/vim-tags'
+NeoBundle 'FuzzyFinder'
+NeoBundle 'L9'
+NeoBundle 't9md/vim-quickhl'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc.vim'
 filetype plugin on
 filetype indent on
 
@@ -112,3 +120,36 @@ let g:molokai_original = 1
 """szw/vim-tagsの設定"""
 let g:vim_tags_project_tags_command = "/opt/local/bin/ctags -R {OPTIONS} {DIRECTORY} 2>/dev/null"
 let g:vim_tags_gems_tags_command = "/opt/local/bin/ctags -R {OPTIONS} `bundle show --paths` 2>/dev/null"
+"-------------------------------------------------
+"" FuzzyFinder設定
+"-------------------------------------------------
+let g:fuf_keyOpen = '<Tab>'
+let g:fuf_keyOpenTabpage = '<CR>'
+
+"-------------------------------------------------
+"" vim-quickhl設定
+"-------------------------------------------------
+" <Space>m でカーソル下の単語、もしくは選択した範囲のハイライトを行う
+" 再度 <Space>m を行うとカーソル下のハイライトを解除する
+" これは複数の単語のハイライトを行う事もできる
+" <Space>M で全てのハイライトを解除する
+nmap <Space>m <Plug>(quickhl-manual-this)
+xmap <Space>m <Plug>(quickhl-manual-this)
+nmap <Space>M <Plug>(quickhl-manual-reset)
+xmap <Space>M <Plug>(quickhl-manual-reset)
+
+ "-------------------------------------------------
+ "" Vimスカウター設定
+ "-------------------------------------------------
+ function! Scouter(file, ...)
+           let pat = '^\s*$\|^\s*"'
+             let lines = readfile(a:file)
+               if !a:0 || !a:1
+                           let lines = split(substitute(join(lines, "\n"), '\n\s*\\', '', 'g'), "\n")
+                             endif
+                               return len(filter(lines,'v:val !~ pat'))
+                       endfunction
+                       command! -bar -bang -nargs=? -complete=file Scouter
+                                               \        echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
+                       command! -bar -bang -nargs=? -complete=file GScouter
+                                               \        echo Scouter(empty(<q-args>) ? $MYGVIMRC : expand(<q-args>), <bang>0)

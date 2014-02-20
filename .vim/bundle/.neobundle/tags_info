@@ -1,3 +1,5 @@
+FuzzyFinder
+L9
 jellybeans.vim
 molokai
 neobundle.vim
@@ -8,7 +10,12 @@ previm
 solarized
 syntastic
 unite-colorscheme
+unite-outline
 unite.vim
+vim-quickhl
+vim-quickrun
 vim-ref
 vim-tags
+vimfiler.vim
 vimproc
+vimproc.vim
