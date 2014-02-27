@@ -1,4 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/Users/n00972/Desktop/yutrip/source/yutrip/htdocs'
 let g:netrw_dirhist_2='scp://dev.krk@54.250.122.194:22/'
+let g:netrw_dirhist_3='scp://dev.krk@54.250.122.194:22/source/'
+let g:netrw_dirhist_4='scp://dev.krk@54.250.122.194:22/source/Second/'
+let g:netrw_dirhist_5='scp://dev.krk@54.250.122.194:22/source/Second/App/'
